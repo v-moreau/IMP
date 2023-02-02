@@ -10,7 +10,7 @@ while 2 <= in do {
 }
 ```
 
-This projects uses the `dune` utility and the `ocamllex` and `menhir` OCaml packages. The conversion of an IMP code to an abstract syntax tree is done in the [lexer.mll](imp/lib/lexer.mll) and [parser.mly](imp/lib/parser.mly) files. The following commands build the project and execute the interpreter:
+This projects uses the [dune](https://dune.build/) utility and the [ocamllex](https://v2.ocaml.org/manual/lexyacc.html) and [menhir](http://gallium.inria.fr/~fpottier/menhir/) OCaml packages. The conversion of an IMP code to an abstract syntax tree is done in the [lexer.mll](imp/lib/lexer.mll) and [parser.mly](imp/lib/parser.mly) files. The following commands build the project and execute the interpreter:
 ```
 cd imp
 dune build
