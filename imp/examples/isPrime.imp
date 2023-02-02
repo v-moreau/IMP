@@ -1,6 +1,6 @@
 if in <= 1 then out := 0 else out := 1;
 n := 2;
-while n <= in - 1 do {
+while n * n <= in do {
     remainder := in;
     while n <= remainder do remainder := remainder - n;
     if remainder = 0 then out := 0 else skip;
