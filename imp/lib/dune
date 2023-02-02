@@ -1,2 +1,8 @@
 (library
  (name imp))
+
+(ocamllex
+ (modules lexer))
+
+(menhir
+ (modules parser))

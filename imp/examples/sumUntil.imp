@@ -1,0 +1,4 @@
+while 0 <= in do {
+	out := out + in;
+	in := in - 1
+}
