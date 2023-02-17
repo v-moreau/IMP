@@ -1,11 +1,7 @@
 if in <= 1 then {out := 0} else {out := 1};
 n := 2;
-while n * n <= in do {
-    remainder := in;
-    while n <= remainder do {
-        remainder := remainder - n
-    };
-    if remainder = 0 then {
+while n * n <= in && out = 1 do {
+    if in % n = 0 then {
         out := 0
     };
     n := n + 1

@@ -10,16 +10,13 @@ open Syntax
 %type <aexp> aexp
 %token <int> INT
 %token <string> STRING
-%token SUM
-%token SUB
-%token MUL
+%token SUM SUB MUL DIV MOD
 %type <aexp> aexpOperand
 
 /* bexp */
 %type <bexp> bexp
 %token <bool> BOOL
-%token AND OR
-%token NEG
+%token AND OR NEG
 %token EQ LE
 %type <bexp> bexpOperand
 
@@ -72,18 +69,20 @@ aexpOperand:
 
 bexp:
     bexpOperand                     { $1 }
-  | aexp arel aexp                  { Arel ($2, $1, $3) }
   | bexpOperand brel bexpOperand    { Brel ($2, $1, $3) }
   | NEG bexp                        { Neg $2 }
 
 bexpOperand:
     LPAREN bexp RPAREN              { $2 }
   | BOOL                            { Bool $1 }
+  | aexp arel aexp                  { Arel ($2, $1, $3) }
 
 %inline aop:
 | SUM { Sum }
 | SUB { Sub }
 | MUL { Mul }
+| DIV { Div }
+| MOD { Mod }
 
 %inline arel:
 | EQ { Eq }

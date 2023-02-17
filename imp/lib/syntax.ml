@@ -6,7 +6,7 @@ let string_of_loc x = x
 let group x1 y x2 = "(" ^ x1 ^ " " ^ y ^ " " ^ x2 ^ ")"
 
 type aval = int
-type aop = Sum | Sub | Mul
+type aop = Sum | Sub | Mul | Mod | Div
 type aexp =
 | Int of aval
 | Var of loc
@@ -16,6 +16,8 @@ let string_of_aop = function
 | Sum -> "+"
 | Sub -> "-"
 | Mul -> "*"
+| Mod -> "%"
+| Div -> "/"
 let rec string_of_aexp = function
 | Int n -> string_of_int n
 | Var x -> string_of_loc x
@@ -23,9 +25,11 @@ let rec string_of_aexp = function
 
 type env = loc -> aval
 let aop_eval = function
-  | Sum -> (fun x y -> x + y)
-  | Sub -> (fun x y -> x - y)
-  | Mul -> (fun x y -> x * y)
+  | Sum -> (+)
+  | Sub -> (-)
+  | Mul -> ( * )
+  | Mod -> (mod)
+  | Div -> (/)
 let rec aeval (a : aexp) (s : env) =
   match a with
   | Int n -> n

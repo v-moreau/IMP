@@ -14,6 +14,8 @@ rule token = parse
   | '+'                                 { SUM }
   | '-'                                 { SUB }
   | '*'                                 { MUL }
+  | '/'                                 { DIV }
+  | '%'                                 { MOD }
   (* bexp *)
   | "true"                              { BOOL(true) }
   | "false"                             { BOOL(false) }

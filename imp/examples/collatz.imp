@@ -1,0 +1,9 @@
+out := 0;
+while ~ in = 1 do {
+	if in % 2 = 0 then {
+		in := in / 2
+	} else {
+		in := ((3 * in) + 1)/2
+	};
+	out := out + 1
+}
